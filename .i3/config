@@ -27,16 +27,14 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcherM
-#bindsym $mod+d exec --no-startup-id dmenu_recency
-# bindsym $mod+d exec rofi -show drun -theme dmenu
-bindsym $mod+d exec rofi -show drun -theme lb
-
+# start program launcher
+# bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec rofi -show drun -theme .rofi-theme/sidetab
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
@@ -44,14 +42,12 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-# I change settings in here if you want to use pavucontrol
-# or pulseaudio these settings help you to start these program. 
-
 exec --no-startup-id pa-applet
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+##bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
+#exec --no-startup-id start-pulseaudio-x11
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
@@ -64,9 +60,9 @@ exec --no-startup-id volumeicon
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox-developer-edition
-bindsym $mod+F3 exec thunar
+bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu thunar
+bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
@@ -324,17 +320,11 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar -t
-	status_command i3status
+	status_command i3status -c ~/.i3/i3status.conf 
 	position top # new configuration old bottom
-
-        # Add font settings
-        font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:DejaVu Sans Mono 10 
-
         # New Seperator Symbol
         separator_symbol "/"
 
@@ -344,7 +334,7 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
+        font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
     colors {
