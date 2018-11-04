@@ -326,7 +326,7 @@ bar {
 	status_command i3status -c ~/.i3/i3status.conf 
 	position top # new configuration old bottom
         # New Seperator Symbol
-        separator_symbol "/"
+        separator_symbol " / "
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
