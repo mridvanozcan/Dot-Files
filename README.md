@@ -33,16 +33,17 @@ I prefer to change line to commentline and writing new one.
 
 #### Dependancy
 
-- Scort
+- Scrot
   
-Do not forget to check manual of Scort!
+Do not forget to check manual of Scrot!
 
 In this line save screenshot to 'Pictures/Screenshot' folder. Not that this code cannot create Screenshot folder! 
 
 After saving screenshot system send notification.
 
 
-`bindsym Print exec "scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshot/'; notify-send 'Screenshot saved!`
+`bindsym Print exec "scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshot/'; notify-send 
+'Screenshot saved!' " `
 
 ---
 
