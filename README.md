@@ -13,7 +13,7 @@
 
 ### **Rofi**
 
-#### Dependancy
+#### Dependency
 
 - [Rofii](https://github.com/DaveDavenport/rofi)
 
@@ -25,12 +25,11 @@ I prefer to change line to commentline and writing new one.
 
 `bindsym $mod+d exec rofi -show drun -theme gruvbox-dark-hard`
 
-
 ---
 
 ###  **Screenshot**
 
-#### Dependancy
+#### Dependency
 
 - Scrot
   
@@ -40,21 +39,16 @@ In this line save screenshot to 'Pictures/Screenshot' folder. Not that this code
 
 After saving screenshot system send notification.
 
-
-`bindsym Print exec "scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshot/'; notify-send 
-'Screenshot saved!' " `
+`bindsym Print exec "scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshot/'; notify-send 'Screenshot saved!' " `
 
 ---
 
 ### **Multimedia Keys & Settings**
 
-#### Dependancy
-
+#### Dependency
 
 - [Volum Icon](https://github.com/Maato/volumeicon)
 - [Playerctl](https://github.com/acrisci/playerctl)
-
-
 
 ### **Volum Icon**
 
@@ -81,27 +75,3 @@ Note: If in your computer play and pause button are separate this time add this 
 `bindsym XF86AudioPlay  exec playerctl play`
 
 `bindsym XF86AudioPlay  exec playerctl pause`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
