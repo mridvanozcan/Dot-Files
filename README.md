@@ -11,15 +11,13 @@
 
 ## Configuration Notes
 
-
----
 ### **Rofi**
 
 #### Dependancy
 
 - [Rofii](https://github.com/DaveDavenport/rofi)
 
-After installation you change i3-dmenu-desktop to rofi. 
+After installation you change i3-dmenu-desktop to rofi.
 
 I prefer to change line to commentline and writing new one.
 
@@ -29,6 +27,7 @@ I prefer to change line to commentline and writing new one.
 
 
 ---
+
 ###  **Screenshot**
 
 #### Dependancy

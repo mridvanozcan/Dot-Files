@@ -49,14 +49,13 @@ bindsym $mod+Shift+q kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+d exec rofi -show drun -theme Monokai
+bindsym $mod+d exec rofi -show drun -theme gruvbox-dark-hard
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox-developer-edition
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-exec --no-startup-id volumeicon
+bindsym $mod+Shift+F3 exec gksu thunar
 
 # change focus
 bindsym $mod+j focus left
@@ -108,6 +107,19 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -131,6 +143,52 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+
+
+# floating windows
+for_window [class="Pavucontrol"] floating enable
+# for_window [class="Kalu"] floating enable // Optional
+
+## Multimedia Keys
+
+# volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+
+# granular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+
+# mute
+bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
+
+# Media player controls
+bindsym XF86AudioPlay  exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPrev  exec playerctl previous
+
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+
+# Screenshot
+bindsym Print exec "scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshot/'; notify-send 'Screenshot saved!'"
+
+# Redirect sound to headphones
+bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
+
+# Autostart apps
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id "compton -cC"
+exec --no-startup-id nm-applet
+exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "sleep 2s && kalu"
+exec --no-startup-id volumeicon
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -191,76 +249,30 @@ bar {
 	i3bar_command i3bar -t
 	status_command i3status 
 	position top # new configuration old bottom
-    # New Seperator Symbol
-    separator_symbol "/"
+        # New Seperator Symbol
+   	separator_symbol "|"
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+	tray_output primary
+	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
-    font xft:URWGothic-Book 11
+        font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
 	colors {
         background $bg-color
         separator #757575
-        #                  border             background         text
+       #                  border             background         text
         focused_workspace  $bg-color          $bg-color          $text-color
         inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        active_workspace   #595B5B #353836 #FDF6E3
+       active_workspace   #595B5B #353836 #FDF6E3
     }
 }
 
 
-# floating windows
-for_window [class="Pavucontrol"] floating enable
-for_window [class="Kalu"] floating enable
-
-## Multimedia Keys
-
-# volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-
-# granular volume control
-bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
-
-# mute
-bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
-
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
-
-bindsym XF86AudioPlay exec mocp --toggle-pause
-bindsym XF86AudioPause exec mocp --toggle-pause
-bindsym XF86AudioStop exec mocp --togle-pause
-bindsym XF86AudioNext exec mocp --next
-bindsym XF86AudioPrev exec mocp --previous
-
-bindsym $mod+F5 exec mocp --toggle-pause
-bindsym $mod+F6 exec mocp --stop
-bindsym $mod+F7 exec mocp --previous
-bindsym $mod+F8 exec mocp --next
-
-# App shortcuts
-#bindsym $mod+w exec "/usr/bin/chromium"
-#bindsym $mod+n exec "/usr/bin/thunar"
-
-# Redirect sound to headphones
-bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
-
-# Autostart apps
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id "compton -cC"
-exec --no-startup-id nm-applet
-exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "sleep 2s && kalu"
 
 #############################
 ### settings for i3-gaps: ###
@@ -318,7 +330,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
