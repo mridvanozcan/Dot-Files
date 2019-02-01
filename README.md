@@ -1,6 +1,6 @@
 # i3-gaps Dot Files
 
-![Desktop](Screenshots/1.jpg)
+![Desktop](Screenshots/3.jpg)
 
 ## Used Apps
 
@@ -75,3 +75,19 @@ Note: If in your computer play and pause button are separate this time add this 
 `bindsym XF86AudioPlay  exec playerctl play`
 
 `bindsym XF86AudioPlay  exec playerctl pause`
+
+## Some Screenshots
+
+You can find my own design wallpapers in wallpaper folder!
+
+Here you can look some secreenshots my desktop.
+
+---
+
+![Terminal](Screenshots/1.jpg)
+
+---
+
+![Desk](Screenshots/2.jpg)
+
+---

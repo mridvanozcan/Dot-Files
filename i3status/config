@@ -37,7 +37,7 @@ load {
 
 disk "/" {
         # format = " hdd %avail "
-        format = "  %avail "
+        format = "-%avail "
 }
 
 #ethernet _first_ {
@@ -48,8 +48,8 @@ disk "/" {
 
 wireless _first_ {
 # if you use %speed, i3status requires root privileges
-        format_up = "Wifi: %ip "
-        format_down = " no lan "
+        format_up = "Wifi Connected!"
+        format_down = "Wifi is not Connected!"
 }
 
 
@@ -72,7 +72,7 @@ battery all {
 
 tztime local {
         # format = "%Y-%m-%d %H:%M:%S"
-        format = " %H:%M "
+        format = "%d.%m.%Y-%H:%M "
 }
 
 volume master {
